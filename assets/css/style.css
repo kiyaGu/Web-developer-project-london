@@ -483,7 +483,7 @@ footer #socialmedia ul li a.badge.social.github:hover {
 /* media query section*/
 @media (min-width: 0) and (max-width: 650px) {
   header .fullheight .hgroup {
-    padding: 200px 0 100px 0;
+    padding: 150px 0 100px 0;
   }
   header .fullheight .hgroup h1 {
     font-size: 2.2em;
@@ -531,7 +531,7 @@ footer #socialmedia ul li a.badge.social.github:hover {
   }
   #apply article .contactUs .form_group div textarea{
     margin-left: 0px;
-    width: 25em;
+    width: 20em;
   }
   #apply article .contactUs .form_group div button{
     margin-left: 70px;
