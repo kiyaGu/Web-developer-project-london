@@ -51,6 +51,8 @@ table {
 /* end of reset */
 /* General settings */
 body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
   font: 200 1em/1.5em "Exo 2", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: #FFFFFF;
   color: #000000;
