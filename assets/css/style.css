@@ -488,7 +488,7 @@ footer #socialmedia ul li a.badge.social.github:hover {
   header .fullheight .hgroup h1 {
     font-size: 2.2em;
     padding: 35px 10px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
   header .fullheight .hgroup h2 {
     margin-bottom: 50px;
@@ -545,6 +545,9 @@ footer #socialmedia ul li a.badge.social.github:hover {
   }
 }
 @media (min-width: 450px) and (max-width: 650px) {
+  header .fullheight .hgroup h2 {
+    margin-bottom: 20px;
+  }
   #CYFinfo #CYFFocus section#networking,
   #CYFinfo #CYFFocus section#technology{
     -moz-box-sizing: border-box;
