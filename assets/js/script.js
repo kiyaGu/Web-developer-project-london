@@ -1,8 +1,37 @@
-var btnReadMore = document.querySelector('#btnNews1');
-btnReadMore.addEventListener('click', function(){
-  document.querySelector('#newsDetail').style.display = "block";
+
+/*
+for hidding and showing the detailed news in the news section and to show it only when the
+user clicks 'more' button. It also used for the reverse to hide the detailed news when the
+user click 'less' button.
+*/
+var readMore = function(btn){
+  var newsDetailProp = window.getComputedStyle(document.querySelector('#newsDetail'),null);
+  if(newsDetailProp.getPropertyValue("display") === 'none'){
+    //to display the detailed content of the news when the button 'more' is clicked
+    document.querySelector('#newsDetail').style.display = "block";
+    btn.innerHTML = 'Less';
+  } else{
+    //to display less content 'higlight' of the news when the button 'less' is clicked
+    document.querySelector('#newsDetail').style.display = "none";
+    btn.innerHTML = 'More';
+  }
+}
+
+//for each read 'More' button
+var btnReadMoreNews1 = document.querySelector('#btnNews1');
+btnReadMoreNews1.addEventListener('click', function(){
+  readMore(this);
+});
+var btnReadMoreNews2 = document.querySelector('#btnNews2');
+btnReadMoreNews2.addEventListener('click', function(){
+  readMore(this);
+});
+var btnReadMoreNews3 = document.querySelector('#btnNews3');
+btnReadMoreNews3.addEventListener('click', function(){
+  readMore(this);
 });
 
+//for validating the form
 var btnSubmit = document.querySelector('#submit');
 btnSubmit.addEventListener('click',function(e){
   e.preventDefault();
