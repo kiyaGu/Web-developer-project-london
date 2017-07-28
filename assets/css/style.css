@@ -94,7 +94,7 @@ p {
 
 /* header section */
 header .fullheight {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)), url("../images/1.jpg") no-repeat center center fixed;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, .9)), url("../images/1.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -329,6 +329,16 @@ header #nav .navbar ul li a.active {
   text-align: center;
   border-top: 1px solid #DF4848;
   border-bottom: 1px solid #DF4848;
+	display: none;
+}
+#news .readMore{
+	border: 2px solid #E27A3F;
+  outline: none;
+  padding: .5em 2em;
+  text-align: center;
+  background: transparent;
+  border-radius: 2em;
+  color: #DF4848;
 }
 /* Apply section */
 #apply {
@@ -417,6 +427,24 @@ header #nav .navbar ul li a.active {
 #apply article .contactUs .form_group div button:hover {
   color: #d02424;
   background: linear-gradient(to bottom, #0a5c71, #063642);
+}
+/* for dynamically generated error messages */
+#errorHeading{
+  width: 60px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #EFC94C;
+  color: #DF4848;
+  font-size: 1em;
+  line-height: 130%;
+}
+.error{
+  color: #DF4848;
+  list-style: square;
+  border-bottom: 1px solid #EFC94C;
+  margin-left: 10%;
+  line-height: 155%;
+  margin-bottom: 10px;
+  width: 60%;
 }
 /* footer section */
 footer {
@@ -648,21 +676,4 @@ footer #socialmedia ul li a.badge.social.github:hover {
     background-repeat: no-repeat;
     background-position: 120% center;
   }
-}
-#errorHeading{
-  width: 60px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #EFC94C;
-  color: #DF4848;
-  font-size: 1em;
-  line-height: 130%;
-}
-.error{
-  color: #DF4848;
-  list-style: square;
-  border-bottom: 1px solid #EFC94C;
-  margin-left: 10%;
-  line-height: 155%;
-  margin-bottom: 10px;
-  width: 60%;
 }

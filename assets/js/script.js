@@ -1,5 +1,9 @@
-var btnSubmit = document.querySelector('#submit');
+var btnReadMore = document.querySelector('#btnNews1');
+btnReadMore.addEventListener('click', function(){
+  document.querySelector('#newsDetail').style.display = "block";
+});
 
+var btnSubmit = document.querySelector('#submit');
 btnSubmit.addEventListener('click',function(e){
   e.preventDefault();
   let parent = document.querySelector('#apply article.content');
@@ -53,13 +57,11 @@ if(error.length > 1){
     let item = createElementFunc('li');
     setElementAttribute(item, 'class', 'error');
     let content = createTextContentFunc(element);
-
     item.appendChild(content);
     unorderedList.appendChild(item);
   });
     errorContainer.appendChild(inform);
     errorContainer.appendChild(unorderedList);
     parent.appendChild(errorContainer);
-  //console.log(xyz);
 }
 });
