@@ -569,6 +569,9 @@ footer #socialmedia ul li a.badge.social.github:hover {
   #apply article .contactUs .form_group:nth-of-type(5) label{
     display: none;
   }
+	.error{
+	  width: 90%;
+	}
   footer #socialmedia ul li {
     display: inline-block;
     padding: 0 0px;
@@ -640,9 +643,6 @@ footer #socialmedia ul li a.badge.social.github:hover {
     font-size: 1em;
     line-height: 130%;
   }
-	.error{
-	  width: 95%;
-	}
 }
 @media (max-width: 650px) {
   header #nav .navbar .brand a {
