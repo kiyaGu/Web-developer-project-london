@@ -640,6 +640,9 @@ footer #socialmedia ul li a.badge.social.github:hover {
     font-size: 1em;
     line-height: 130%;
   }
+	.error{
+	  width: 95%;
+	}
 }
 @media (max-width: 650px) {
   header #nav .navbar .brand a {
