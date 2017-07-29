@@ -54,29 +54,33 @@ btnSubmit.addEventListener('click',function(e){
   var phoneNumber = document.querySelector('#phoneNumber');
   var message = document.querySelector('#message');
   var error = [];
+  //validate full name
   if(fullName.value === "")
       error.push("You need to put your full name");
+  //validate email address
   if(email.value === "")
       error.push("You need to put your email address");
   else{
+    // regular expression to validate if the email address is in a valid format
     var emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     //verify the email address and notify success or error
     if (!(emailRegExp.test(email.value))) {
       error.push("The email address "+ email.value + " is not valid");
     }
   }
-  if(message.value === "")
-      error.push("You need to put the content of your Message");
-
-  if( isNaN(parseInt(phoneNumber.value)) && phoneNumber.value !== "")
+  //validate phone number
+  if(isNaN(parseInt(phoneNumber.value)) && phoneNumber.value !== "")
      error.push('You need to put all digit phone number');
   else{
       if(phoneNumber.value.split("").length !== 11 && phoneNumber.value.split("").length !== 0)
             error.push('You should put a eleven digit phone number');
-    }
-
+  }
+  //validate message content
+  if(message.value === "")
+      error.push("You need to put the content of your Message");
 //display error
 if(error.length > 1){
+  //to inject an error message element to the DOM
   var errorContainer = createElementFunc('div');
   setElementAttribute(errorContainer, 'id', 'errorContainer');
   var unorderedList = createElementFunc('ul');
@@ -84,15 +88,15 @@ if(error.length > 1){
   var inform = createElementFunc('p');
   setElementAttribute(inform, 'id', 'errorHeading');
   inform.appendChild(createTextContentFunc('Please...'));
- error.forEach(function(element){
+  error.forEach(function(element){
     let item = createElementFunc('li');
     setElementAttribute(item, 'class', 'error');
     let content = createTextContentFunc(element);
     item.appendChild(content);
     unorderedList.appendChild(item);
   });
-    errorContainer.appendChild(inform);
-    errorContainer.appendChild(unorderedList);
-    parent.appendChild(errorContainer);
+  errorContainer.appendChild(inform);
+  errorContainer.appendChild(unorderedList);
+  parent.appendChild(errorContainer);
 }
 });
