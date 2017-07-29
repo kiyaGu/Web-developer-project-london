@@ -1,4 +1,14 @@
 
+var createElementFunc = function(elementType) {
+    return document.createElement(elementType);
+}
+var createTextContentFunc = function(text) {
+    return document.createTextNode(text);
+}
+var setElementAttribute = function(element, attribute, value) {
+    element.setAttribute(attribute, value);
+};
+
 /*
 for hidding and showing the detailed news in the news section and to show it only when the
 user clicks 'more' button. It also used for the reverse to hide the detailed news when the
@@ -64,15 +74,7 @@ btnSubmit.addEventListener('click',function(e){
       if(phoneNumber.value.split("").length !== 11 && phoneNumber.value.split("").length !== 0)
             error.push('You should put a eleven digit phone number');
     }
-    var createElementFunc = function(elementType) {
-        return document.createElement(elementType);
-    }
-    var createTextContentFunc = function(text) {
-        return document.createTextNode(text);
-    }
-    var setElementAttribute = function(element, attribute, value) {
-        element.setAttribute(attribute, value);
-    };
+
 //display error
 if(error.length > 1){
   var errorContainer = createElementFunc('div');
