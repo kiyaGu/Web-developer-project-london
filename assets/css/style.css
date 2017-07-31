@@ -146,7 +146,7 @@ header .fullheight .hgroup p img {
 }
 header #nav {
   background-size: 100%;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0a5c71), color-stop(100%, #063642));
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0a5c71), color-stop(100%, #063642)) url('');
   background-image: -moz-linear-gradient(top, #0a5c71, #063642);
   background-image: -webkit-linear-gradient(top, #0a5c71, #063642);
   background-image: linear-gradient(to bottom, #0a5c71, #063642);
@@ -183,15 +183,19 @@ header #nav .navbar .brand {
   font-family: 200 1.5em/1.5em "Exo 2", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
   text-transform: uppercase;
-  background: #DF4848;
+  background: rgba(255, 255, 255, 0.8);
 }
 header #nav .navbar .brand a {
-  color: #FFFFFF;
+  color: #000;
   text-decoration: none;
   text-align: center;
   display: inline-block;
   padding: 10px;
   font-size: 1.5em;
+}
+header #nav .navbar .brand a span#code{
+	color: #DF4848;
+
 }
 header #nav .navbar .brand a span.full {
   display: inline;
@@ -231,16 +235,14 @@ header #nav .navbar ul li a.active {
 /* welcome section */
 #welcome {
   background-size: 100%;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #efc94c), color-stop(100%, #e27a3f));
-  background-image: -moz-linear-gradient(top, #efc94c, #e27a3f);
-  background-image: -webkit-linear-gradient(top, #efc94c, #e27a3f);
-  background-image: linear-gradient(to bottom, #efc94c, #e27a3f);
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, .9)), url("../images/7.jpg") no-repeat center center fixed;
 }
 #welcome article {
   text-align: center;
-  max-width: 70%;
+  max-width: 95%;
   margin-left: auto;
   margin-right: auto;
+	color: #fff;
 }
 #welcome article:after {
   content: " ";
@@ -248,10 +250,14 @@ header #nav .navbar ul li a.active {
   clear: both;
 }
 #welcome h1 {
-  font-weight: normal;
+  font-size: 2em;
   line-height: 100%;
-  color: #a24a19;
+  color: #E27A3F;
   padding: 10px 0;
+}
+#welcome h1 i{
+	color: #fec85d;
+
 }
 /* About CYF section */
 #CYFinfo {
@@ -318,18 +324,6 @@ header #nav .navbar ul li a.active {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
-}
-#news #newsDetail {
-  margin-top: 20px;
-  background-size: 100%;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #fefaf0));
-  background-image: -moz-linear-gradient(top, #ffffff, #fefaf0);
-  background-image: -webkit-linear-gradient(top, #ffffff, #fefaf0);
-  background-image: linear-gradient(to bottom, #ffffff, #fefaf0);
-  text-align: center;
-  border-top: 1px solid #DF4848;
-  border-bottom: 1px solid #DF4848;
-	display: none;
 }
 #news .readMore{
 	border: 2px solid #E27A3F;
@@ -534,6 +528,9 @@ footer #socialmedia ul li a.badge.social.github:hover {
   header #nav .navbar ul li a span {
     display: none;
   }
+	#welcome h1 {
+	  font-size: 1.5em;
+	}
   #CYFinfo #moreDetails {
     padding:20px 8px;
   }
@@ -624,21 +621,32 @@ footer #socialmedia ul li a.badge.social.github:hover {
     font-size: 1.5em;
     line-height: 140%;
   }
-  #news section {
+  #news #newsSection{
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    width: 33.33333%;
-    float: left;
-    padding-left: 0.83333%;
-    padding-right: 0.83333%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content:flex-start;
+		/*flex-direction: column;*/
+    /*float: left;*/
+		/*display: inline-block;*/
+
   }
+	#news #newsSection section{
+		flex-basis: 30%;
+		padding-left: 1.5%;
+    padding-right: 1.5%;
+		margin-bottom: 50px;
+	}
   #news section h2 {
+		margin-top: 10px;
+		margin-bottom: 20px;
     font-size: 1.2em;
     line-height: 120%;
     color: #CD0069;
   }
-  #news section p {
+  #news section p{
     padding-top: 10px;
     font-size: 1em;
     line-height: 130%;
@@ -653,6 +661,7 @@ footer #socialmedia ul li a.badge.social.github:hover {
   }
   header #nav .navbar .brand a span.abbreviation {
     display: inline;
+		color: #DF4848;
   }
 }
 @media (min-width: 650px) and (max-width: 960px) {
@@ -669,9 +678,12 @@ footer #socialmedia ul li a.badge.social.github:hover {
     margin-left: auto;
     margin-right: auto;
   }
+	#news #newsDetail {
+		max-width: 95%;
+	}
 }
 @media (min-width: 1200px) {
-  .scene {
+   {
     padding: 40px 0;
   }
   #CYFinfo #moreDetails {
@@ -679,4 +691,60 @@ footer #socialmedia ul li a.badge.social.github:hover {
     background-repeat: no-repeat;
     background-position: 120% center;
   }
+}
+#news #newsDetail{
+	  display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+		right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+#news #newsDetailContent {
+	margin: 5px 15%;
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #fefaf0));
+  background-image: -moz-linear-gradient(top, #ffffff, #fefaf0);
+  background-image: -webkit-linear-gradient(top, #ffffff, #fefaf0);
+  background-image: linear-gradient(to bottom, #ffffff, #fefaf0);
+  text-align: center;
+  border-top: 1px solid #DF4848;
+  border-bottom: 1px solid #DF4848;
+	border-radius: 10px;
+	height: auto;
+	overflow: auto;
+	/*display: none;*/
+}
+#news #newsDetailContent p{
+  padding: 30px 20px;
+}
+#news #newsDetailContent img {
+  width: 250px;
+	height: 250px;
+	width: 60%;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+.close {
+		margin: 5px 10px;
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close i{
+	color: #000;
+}
+.close i:hover,
+.close i:focus {
+    color: #DF4848;;
+    text-decoration: none;
+    cursor: pointer;
 }
