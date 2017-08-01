@@ -338,6 +338,9 @@ header #nav .navbar ul li a.active {
 	background: #DF4848;
 	color: #fff;
 }
+#news #newsSection section h2::first-letter{
+	text-transform: capitalize;
+}
 #news #newsDetail{
 	  display: none;
     position: fixed;
@@ -366,6 +369,9 @@ header #nav .navbar ul li a.active {
 	height: auto;
 	overflow-y: auto;
 }
+#news #newsDetailContent h2:first-letter{
+  text-transform:capitalize;
+}
 #news #newsDetailContent p{
   padding: 30px 20px;
 }
@@ -377,18 +383,18 @@ header #nav .navbar ul li a.active {
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
-.close {
+#news #newsDetailContent .close {
 		margin: 5px 10px;
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-.close i{
+#news #newsDetailContent .close i{
 	color: #000;
 }
-.close i:hover,
-.close i:focus {
+#news #newsDetailContent .close i:hover,
+#news #newsDetailContent .close i:focus {
     color: #DF4848;;
     text-decoration: none;
     cursor: pointer;
@@ -704,10 +710,6 @@ footer #socialmedia ul li a.badge.social.github:hover {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content:flex-start;
-		/*flex-direction: column;*/
-    /*float: left;*/
-		/*display: inline-block;*/
-
   }
 	#news #newsSection section{
 		flex-basis: 30%;
