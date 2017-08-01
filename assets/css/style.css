@@ -583,7 +583,7 @@ footer #socialmedia ul li a.badge.social.github:hover {
     margin-bottom: 50px;
   }
   header #nav .navbar ul li a {
-    padding: 10px 18px;
+    padding: 10px 17px;
     font-size: 1em;
   }
   header #nav .navbar ul li a::after {
@@ -593,29 +593,29 @@ footer #socialmedia ul li a.badge.social.github:hover {
   header #nav .navbar ul li a span {
     display: none;
   }
-	#welcome h1 {
-	  font-size: 1.3em;
-	}
-	#welcome p {
-	  font-size: 1em;
-	}
+  #welcome h1 {
+    font-size: 1.3em;
+  }
+  #welcome p {
+    font-size: 1em;
+  }
   #CYFinfo #moreDetails {
     padding:20px 8px;
   }
-	#news #newsDetailContent{
-		width: 90%;
-		margin: 5px 20px;
-	}
-	#news #newsDetailContent h2{
-	  font-size: 1.1em;
-	}
-	#news #newsDetailContent p{
-	  padding: 10px 20px;
-	}
-	#news #newsDetailContent img {
-		height: 200px;
-		width: 80%;
-	}
+  #news #newsDetailContent{
+    width: 90%;
+    margin: 5px 20px;
+  }
+  #news #newsDetailContent h2{
+    font-size: 1.1em;
+  }
+  #news #newsDetailContent p{
+    padding: 10px 20px;
+  }
+  #news #newsDetailContent img {
+    height: 200px;
+    width: 80%;
+  }
   #apply article {
     padding: 20px 20px;
     margin-top: 30px;
