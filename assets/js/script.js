@@ -90,7 +90,7 @@ var request = Ajax_request();
      }
    }
    }
-  var url = 'httpss://cyf-api.herokuapp.com/news';  //server location
+  var url = 'https://cyf-api.herokuapp.com/news';  //server location
   request.open('GET', url);                    // adding it to the request
   request.setRequestHeader('Accepts', 'application/json'); //header info
   request.send();
@@ -122,7 +122,7 @@ request.onreadystatechange = function() {
    }
  }
  }
-var url = 'httpss://cyf-api.herokuapp.com/news'; //server location
+var url = 'https://cyf-api.herokuapp.com/news'; //server location
 request.open('GET', url);                    // adding it to the request
 request.setRequestHeader('Accepts', 'application/json'); //header info
 request.send();                                 // sending the reque
