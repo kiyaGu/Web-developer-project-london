@@ -1,4 +1,7 @@
 
+/*==========================
+      functions creating DOM elements
+            ===================================*/
 var createElementFunc = function(elementType) {
     return document.createElement(elementType);
 }
@@ -21,7 +24,9 @@ window.onclick = function(event) {
     }
 }
 
-//==========================ajax request===================================//
+/*==========================
+      ajax request
+            ===================================*/
   function Ajax_request(){
   if (window.XMLHttpRequest) { // Mozilla, Safari, ...
       xmlhttp = new XMLHttpRequest();
@@ -43,6 +48,9 @@ window.onclick = function(event) {
      return xmlhttp;
   }
 var request = Ajax_request();
+/*==========================
+    to dynamically fetching the news from the API
+          ===================================*/
 (function(){
   request.onreadystatechange = function() {
    if (request.readyState === 4) {  // check if a response was sent back
@@ -69,6 +77,7 @@ var request = Ajax_request();
          setElementAttribute(button, 'class', 'readMore');
          setElementAttribute(button, 'id', 'btnNews' + i);
          button.appendChild(createTextContentFunc('More'));
+         //i will be used for identifying the button from which readMoreNews is initiated
          setElementAttribute(button, 'onclick','readMoreNews(' + i + ')');
          section.appendChild(heading);
          section.appendChild(image);
@@ -81,45 +90,24 @@ var request = Ajax_request();
      }
    }
    }
-  var url = 'http://cyf-api.herokuapp.com/news';                                        //server location
+  var url = 'http://cyf-api.herokuapp.com/news';  //server location
   request.open('GET', url);                    // adding it to the request
   request.setRequestHeader('Accepts', 'application/json'); //header info
   request.send();
 })();
 
 /*
-for hidding and showing the detailed news in the news section and to show it only when the
+for showing the detailed news in the news section and to show it only when the
 user clicks 'more' button. It also used for the reverse to hide the detailed news when the
-user click 'less' button.
+user click 'X' button or anywhere on the screen.
 */
-var readMore = function(btn,heading,img,content){
-  var newsDetailProp = window.getComputedStyle(document.querySelector('#newsDetail'),null);
-  if(newsDetailProp.getPropertyValue("display") === 'none'){
-    //to display the detailed content of the news when the button 'more' is clicked
-
-     let container = document.querySelector("#newsDetailContent");
-     if(img){
-       document.querySelector('#newsDetailContent img').setAttribute("src",img);
-     } else{
-       document.querySelector('#newsDetailContent img').setAttribute("src", 'assets/images/18.jpg');
-     }
-
-
-     document.querySelector('#newsDetail').style.display = "block";
-     document.querySelector('#newsDetailContentHeading').innerHTML = heading;
-     document.querySelector('.newsDetailContentP').innerHTML = content;
-  } else{
-    //to display less content 'higlight' of the news when the button 'less' is clicked
-    document.querySelector('#newsDetail').style.display = "none";
-    // btn.innerHTML = 'More';
-  }
-}
-
+/*==========================
+    to display the full news in a modal
+        ===================================*/
 var readMoreNews = function(i){
 request.onreadystatechange = function() {
  if (request.readyState === 4) {  // check if a response was sent back
    if (request.status === 200) {     // check if request was successful
-     //console.log(JSON.parse(request.responseText)[0].body);
      document.querySelector('#newsDetail').style.display = "block";
      let response = JSON.parse(request.responseText);
      document.querySelector('#newsDetailContentHeading').innerHTML = response[i].title;
@@ -129,74 +117,21 @@ request.onreadystatechange = function() {
      } else{
        document.querySelector('#newsDetailContent img').setAttribute("src", 'assets/images/18.jpg');
      }
-
-     //readMore(this,heading,img,content);
    } else {
      alert('An error occurred during your request: ' +  request.status + ' ' + request.statusText);
    }
  }
  }
-var url = 'http://cyf-api.herokuapp.com/news';                                        //server location
+var url = 'http://cyf-api.herokuapp.com/news'; //server location
 request.open('GET', url);                    // adding it to the request
 request.setRequestHeader('Accepts', 'application/json'); //header info
 request.send();                                 // sending the reque
-
 };
 
+/*==========================
+    for validating the form and submitting it
+          ===================================*/
 
-
-
-
-
-
-// //for each read 'More' button
-// var btnReadMoreNews1 = document.querySelector('#btnNews1');
-//
-//
-//
-//
-// var btnReadMoreNews2 = document.querySelector('#btnNews2');
-// btnReadMoreNews2.addEventListener('click', function(){
-//   request.onreadystatechange = function() {
-//  if (request.readyState === 4) {  // check if a response was sent back
-//    if (request.status === 200) {     // check if request was successful
-//      //console.log(JSON.parse(request.responseText)[0].body);
-//      let heading = JSON.parse(request.responseText)[1].title;
-//      let img = JSON.parse(request.responseText)[1].image;
-//      let content = JSON.parse(request.responseText)[1].body;
-//      readMore(this,heading,img,content);
-//    } else {
-//      alert('An error occurred during your request: ' +  request.status + ' ' + request.statusText);
-//    }
-//  }
-//  }
-// var url = 'http://cyf-api.herokuapp.com/news';                                        //server location
-// request.open('GET', url);                    // adding it to the request
-// request.setRequestHeader('Accepts', 'application/json'); //header info
-// request.send();
-// });
-// var btnReadMoreNews3 = document.querySelector('#btnNews3');
-// btnReadMoreNews3.addEventListener('click', function(){
-//   request.onreadystatechange = function() {
-//  if (request.readyState === 4) {  // check if a response was sent back
-//    if (request.status === 200) {     // check if request was successful
-//      //console.log(JSON.parse(request.responseText)[0].body);
-//      let heading = JSON.parse(request.responseText)[2].title;
-//      let img = JSON.parse(request.responseText)[2].image;
-//      let content = JSON.parse(request.responseText)[2].body;
-//      readMore(this,heading,img,content);
-//    } else {
-//      alert('An error occurred during your request: ' +  request.status + ' ' + request.statusText);
-//    }
-//  }
-//  }
-// var url = 'http://cyf-api.herokuapp.com/news';                                        //server location
-// request.open('GET', url);                    // adding it to the request
-// request.setRequestHeader('Accepts', 'application/json'); //header info
-// request.send();
-// });
-
-//for validating the form
 var btnSubmit = document.querySelector('#submit');
 btnSubmit.addEventListener('click',function(e){
   e.preventDefault();
@@ -224,25 +159,27 @@ btnSubmit.addEventListener('click',function(e){
     }
   }
   //validate phone number
-  if(isNaN(parseInt(phoneNumber.value)) && phoneNumber.value !== "")
+  if(isNaN(parseInt(phoneNumber.value)) && phoneNumber.value !== ""){
      error.push('You need to put all digit phone number');
-  else{
+  }else{
       if(phoneNumber.value.split("").length !== 11 && phoneNumber.value.split("").length !== 0)
             error.push('You should put a eleven digit phone number');
   }
   //validate message content
-  if(message.value === "")
+  if(message.value === ""){
       error.push("You need to put the content of your Message");
+  }
 //display error
 if(error.length > 1){
   //to inject an error message element to the DOM
   var errorContainer = createElementFunc('div');
   setElementAttribute(errorContainer, 'id', 'errorContainer');
   var unorderedList = createElementFunc('ul');
-  var listItems = [];
+
   var inform = createElementFunc('p');
   setElementAttribute(inform, 'id', 'errorHeading');
   inform.appendChild(createTextContentFunc('Please...'));
+  //create list entry for each error identified
   error.forEach(function(element){
     let item = createElementFunc('li');
     setElementAttribute(item, 'class', 'error');
@@ -253,5 +190,29 @@ if(error.length > 1){
   errorContainer.appendChild(inform);
   errorContainer.appendChild(unorderedList);
   parent.appendChild(errorContainer);
+} else{
+  //if there is no error on the user input
+  request.onreadystatechange = function() {
+    if (request.readyState === 4) {  // check if a response was sent back
+      if (request.status === 200) {     // check if request was successful
+          let response = JSON.parse(request.responseText);
+         alert(response.message +" fantastic!!!, We will get back to you ASAP");
+      } else {
+        alert('An error occurred during your request: ' +  request.status + ' ' + request.statusText);
+      }
+    }
+  }
+  var url = 'http://cyf-api.herokuapp.com/contact';
+  request.open('POST', url);
+  var applicant = {
+    name : fullName.value,
+    email : email.value,
+    phone : phoneNumber.value,
+    message: message.value
+  }
+  console.log(applicant);
+  var param = JSON.stringify(applicant);
+  request.setRequestHeader('Content-Type', 'application/json');
+  request.send(param);
 }
 });
