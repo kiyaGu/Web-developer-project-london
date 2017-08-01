@@ -90,7 +90,7 @@ var request = Ajax_request();
      }
    }
    }
-  var url = 'http://cyf-api.herokuapp.com/news';  //server location
+  var url = 'httpss://cyf-api.herokuapp.com/news';  //server location
   request.open('GET', url);                    // adding it to the request
   request.setRequestHeader('Accepts', 'application/json'); //header info
   request.send();
@@ -122,7 +122,7 @@ request.onreadystatechange = function() {
    }
  }
  }
-var url = 'http://cyf-api.herokuapp.com/news'; //server location
+var url = 'httpss://cyf-api.herokuapp.com/news'; //server location
 request.open('GET', url);                    // adding it to the request
 request.setRequestHeader('Accepts', 'application/json'); //header info
 request.send();                                 // sending the reque
@@ -202,7 +202,7 @@ if(error.length > 1){
       }
     }
   }
-  var url = 'http://cyf-api.herokuapp.com/contact';
+  var url = 'https://cyf-api.herokuapp.com/contact';
   request.open('POST', url);
   var applicant = {
     name : fullName.value,
