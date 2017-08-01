@@ -1,23 +1,27 @@
 
 /*==========================
-      functions creating DOM elements
+      functions for creating DOM elements
             ===================================*/
-var createElementFunc = function(elementType) {
+//to create DOM elements
+let createElementFunc = function(elementType) {
     return document.createElement(elementType);
 }
-var createTextContentFunc = function(text) {
+//to create text node
+let createTextContentFunc = function(text) {
     return document.createTextNode(text);
 }
-var setElementAttribute = function(element, attribute, value) {
+//to assign attribute to node elements
+let setElementAttribute = function(element, attribute, value) {
     element.setAttribute(attribute, value);
 };
 
-var modal = document.getElementById('newsDetail');
-var span = document.getElementsByClassName("close")[0];
+let modal = document.getElementById('newsDetail');
+let span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
 }
+//when the user clicks anywhere outside of the modal, close the modal
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
@@ -47,7 +51,7 @@ window.onclick = function(event) {
     }
      return xmlhttp;
   }
-var request = Ajax_request();
+let request = Ajax_request();
 /*==========================
     to dynamically fetching the news from the API
           ===================================*/
@@ -56,21 +60,24 @@ var request = Ajax_request();
    if (request.readyState === 4) {  // check if a response was sent back
      if (request.status === 200) {     // check if request was successful
        let news = JSON.parse(request.responseText);
-       var newsLength = news.length;
-       var readMoreFunc = [];
+       let newsLength = news.length;
+       let readMoreFunc = [];
        let newsSection = document.querySelector('#newsSection');
-       for(var i = 0; i < newsLength; i++){
+       //for each news object create a section with h2, image and p
+       for(let i = 0; i < newsLength; i++){
          let section = createElementFunc('section');
          setElementAttribute(section,'id','news' + i);
          let heading = createElementFunc('h2');
          heading.appendChild(createTextContentFunc(news[i].title));
          let image = createElementFunc('img');
+         //if image is not provided use a placeholder
          if(news[i].image){
-           image.setAttribute('src', news[i].image);
+           setElementAttribute(image,'src', news[i].image);
          } else{
-           image.setAttribute('src', 'assets/images/18.jpg');
+           setElementAttribute(image,'src', 'assets/images/18.jpg');
          }
-         var newsSnippet = news[i].body.substring(0, 150);
+         //to display only the snippet of the news (150 characters long)
+         let newsSnippet = news[i].body.substring(0, 150);
          let content = createElementFunc('p');
          content.appendChild(createTextContentFunc(newsSnippet + " ................ "));
          let button = createElementFunc('button');
@@ -90,7 +97,7 @@ var request = Ajax_request();
      }
    }
    }
-  var url = 'https://cyf-api.herokuapp.com/news';  //server location
+  let url = 'https://cyf-api.herokuapp.com/news';  //server location
   request.open('GET', url);                    // adding it to the request
   request.setRequestHeader('Accepts', 'application/json'); //header info
   request.send();
@@ -104,7 +111,7 @@ user click 'X' button or anywhere on the screen.
 /*==========================
     to display the full news in a modal
         ===================================*/
-var readMoreNews = function(i){
+let readMoreNews = function(i){
 request.onreadystatechange = function() {
  if (request.readyState === 4) {  // check if a response was sent back
    if (request.status === 200) {     // check if request was successful
@@ -122,7 +129,7 @@ request.onreadystatechange = function() {
    }
  }
  }
-var url = 'https://cyf-api.herokuapp.com/news'; //server location
+let url = 'https://cyf-api.herokuapp.com/news'; //server location
 request.open('GET', url);                    // adding it to the request
 request.setRequestHeader('Accepts', 'application/json'); //header info
 request.send();                                 // sending the reque
@@ -132,18 +139,23 @@ request.send();                                 // sending the reque
     for validating the form and submitting it
           ===================================*/
 
-var btnSubmit = document.querySelector('#submit');
+let btnSubmit = document.querySelector('#submit');
 btnSubmit.addEventListener('click',function(e){
   e.preventDefault();
   let parent = document.querySelector('#apply article.content');
+
+  //if the error is already displayed and the user submits agains
+  //remove the previous error and check again
   if(parent.contains(document.querySelector('#errorContainer'))){
     parent.removeChild(document.querySelector('#errorContainer'));
   }
-  var fullName = document.querySelector('#fullName');
-  var email = document.querySelector('#email');
-  var phoneNumber = document.querySelector('#phoneNumber');
-  var message = document.querySelector('#message');
-  var error = [];
+  let fullName = document.querySelector('#fullName');
+  let email = document.querySelector('#email');
+  let phoneNumber = document.querySelector('#phoneNumber');
+  let message = document.querySelector('#message');
+
+  //to hold any error that is identified
+  let error = [];
   //validate full name
   if(fullName.value === "")
       error.push("You need to put your full name");
@@ -152,16 +164,18 @@ btnSubmit.addEventListener('click',function(e){
       error.push("You need to put your email address");
   else{
     // regular expression to validate if the email address is in a valid format
-    var emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     //verify the email address and notify success or error
     if (!(emailRegExp.test(email.value))) {
       error.push("The email address "+ email.value + " is not valid");
     }
   }
   //validate phone number
+  //if the phone number is not a digit and if it is not empty
   if(isNaN(parseInt(phoneNumber.value)) && phoneNumber.value !== ""){
      error.push('You need to put all digit phone number');
   }else{
+      //if the phone number is more/less than 11 digits and if it is not empty
       if(phoneNumber.value.split("").length !== 11 && phoneNumber.value.split("").length !== 0)
             error.push('You should put a eleven digit phone number');
   }
@@ -169,16 +183,18 @@ btnSubmit.addEventListener('click',function(e){
   if(message.value === ""){
       error.push("You need to put the content of your Message");
   }
-//display error
+//if there is any error in the above validation display error
 if(error.length > 1){
   //to inject an error message element to the DOM
-  var errorContainer = createElementFunc('div');
+  let errorContainer = createElementFunc('div');
   setElementAttribute(errorContainer, 'id', 'errorContainer');
-  var unorderedList = createElementFunc('ul');
 
-  var inform = createElementFunc('p');
+  //to display the error in an ordered list format
+  let unorderedList = createElementFunc('ul');
+  let inform = createElementFunc('p');
   setElementAttribute(inform, 'id', 'errorHeading');
   inform.appendChild(createTextContentFunc('Please...'));
+
   //create list entry for each error identified
   error.forEach(function(element){
     let item = createElementFunc('li');
@@ -196,22 +212,23 @@ if(error.length > 1){
     if (request.readyState === 4) {  // check if a response was sent back
       if (request.status === 200) {     // check if request was successful
           let response = JSON.parse(request.responseText);
-         alert(response.message +" fantastic!!!, We will get back to you ASAP");
+          //notify the user with a success message
+         alert(response.message +" fantastic !!!, We will get back to you ASAP");
       } else {
         alert('An error occurred during your request: ' +  request.status + ' ' + request.statusText);
       }
     }
   }
-  var url = 'https://cyf-api.herokuapp.com/contact';
+  let url = 'https://cyf-api.herokuapp.com/contact';
   request.open('POST', url);
-  var applicant = {
+  let applicant = {
     name : fullName.value,
     email : email.value,
     phone : phoneNumber.value,
     message: message.value
   }
   console.log(applicant);
-  var param = JSON.stringify(applicant);
+  let param = JSON.stringify(applicant);
   request.setRequestHeader('Content-Type', 'application/json');
   request.send(param);
 }
