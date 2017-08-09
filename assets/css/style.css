@@ -140,7 +140,7 @@ header .fullheight .hgroup h2 {
 }
 header .fullheight .hgroup p {
   position: absolute;
-  bottom : 3em;
+  bottom : 2.5em;
   left: 45%;
   border: 1px solid #fec951;
   padding: 11px 15px;
@@ -681,6 +681,9 @@ footer #socialmedia ul li a.badge.social.github:hover {
   header .fullheight .hgroup h2 {
     margin-bottom: 5px;
   }
+  header .fullheight .hgroup p {
+  bottom : 2.5em;
+}
   #CYFinfo #CYFFocus section#backend,
   #CYFinfo #CYFFocus section#networking{
     -moz-box-sizing: border-box;
