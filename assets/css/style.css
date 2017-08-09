@@ -682,8 +682,12 @@ footer #socialmedia ul li a.badge.social.github:hover {
     margin-bottom: 5px;
   }
   header .fullheight .hgroup p {
-  bottom : .5em;
-}
+    bottom : .3em;
+    padding: 8px 12px;
+  }
+  header .fullheight .hgroup p i{
+    font-size: 1.6em;
+  }
   #CYFinfo #CYFFocus section#backend,
   #CYFinfo #CYFFocus section#networking{
     -moz-box-sizing: border-box;
@@ -763,7 +767,7 @@ footer #socialmedia ul li a.badge.social.github:hover {
   }
   header #nav .navbar .brand a span.abbreviation {
     display: inline;
-		color: #DF4848;
+    color: #DF4848;
   }
 }
 @media (min-width: 650px) and (max-width: 960px) {
